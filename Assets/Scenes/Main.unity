@@ -168,7 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   potionPrefab: {fileID: 1391473680691640, guid: 8181f5f6586db415e9127adb7996e673,
     type: 2}
-  potionSpeed: 0.5
+  potionSpeed: 0.2
 --- !u!114 &300134395
 MonoBehaviour:
   m_ObjectHideFlags: 0

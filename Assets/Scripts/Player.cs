@@ -19,17 +19,24 @@ public class Player : MonoBehaviour {
         Vector2.right
     };
 
+    private int[] ammo;
+
     private void Awake() {
         potions = new Potion[4];
         potions[(int) POTION.UP] = FindObjectOfType<BoltPotion>();
         potions[(int) POTION.DOWN] = FindObjectOfType<PoisonPotion>();
         potions[(int) POTION.LEFT] = FindObjectOfType<IcePotion>();
         potions[(int) POTION.RIGHT] = FindObjectOfType<FirePotion>();
+
+        ammo = new int[4] { 15, 15, 15, 15 };
     }
 
 
     public void ThrowPotion(POTION type) {
-        potions[(int) type].InstantiatePotion(transform.position, directions[(int) type]);
+        if (ammo[(int) type] > 0) {
+            potions[(int) type].InstantiatePotion(transform.position, directions[(int) type]);
+            ammo[(int) type]--;
+        }
     }
 
 }

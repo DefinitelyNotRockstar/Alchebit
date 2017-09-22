@@ -21,4 +21,8 @@ public class PotionInstance : MonoBehaviour {
     private void Move() {
         potionRigidbody.MovePosition((Vector2) transform.position + direction * speed);
     }
+
+	public void OnCollisionEnter2D(Collision2D collision) {
+		Destroy(gameObject);
+	}
 }
