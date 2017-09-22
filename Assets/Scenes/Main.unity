@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   potionPrefab: {fileID: 1391473680691640, guid: 148cf4c990bf540a7b1d275c4d96df4f,
     type: 2}
+  potionSpeed: 0
 --- !u!114 &300134394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -395,7 +396,7 @@ GameObject:
   - component: {fileID: 1170160825}
   - component: {fileID: 1170160827}
   m_Layer: 0
-  m_Name: Player
+  m_Name: DrLandscape
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
