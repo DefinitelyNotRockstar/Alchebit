@@ -23,7 +23,7 @@ public class Player : MonoBehaviour {
     };
 
     private Rigidbody2D playerRigidbody;
-    private int[] ammo;
+    private float[] ammo;
 
     private void Awake() {
         potions = new Potion[4];
@@ -32,7 +32,7 @@ public class Player : MonoBehaviour {
         potions[(int) POTION.LEFT] = FindObjectOfType<IcePotion>();
         potions[(int) POTION.RIGHT] = FindObjectOfType<FirePotion>();
 
-        ammo = new int[4] { maxAmmo, maxAmmo, maxAmmo, maxAmmo };
+        ammo = new float[4] { maxAmmo, maxAmmo, maxAmmo, maxAmmo };
 
         playerRigidbody = GetComponent<Rigidbody2D>();
     }
@@ -40,7 +40,7 @@ public class Player : MonoBehaviour {
 
 
     public void ThrowPotion(POTION type) {
-        if (ammo[(int) type] > 0) {
+        if (ammo[(int) type] >= 1f) {
             potions[(int) type].InstantiatePotion(transform.position, directions[(int) type]);
             ammo[(int) type]--;
         }
@@ -55,30 +55,30 @@ public class Player : MonoBehaviour {
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collider) {
-        switch (collider.gameObject.tag) {
+    private void OnTriggerEnter2D(Collider2D other) {
+        switch (other.gameObject.tag) {
             case "CollectableBoltPotion":
                 if (ammo[(int) POTION.UP] < maxAmmo) {
-                    ammo[(int) POTION.UP]++;
-                    Destroy(collider.gameObject);
+                    ammo[(int) POTION.UP] += 0.25f;
+                    Destroy(other.gameObject);
                 }
                 break;
             case "CollectablePoisonPotion":
                 if (ammo[(int) POTION.DOWN] < maxAmmo) {
-                    ammo[(int) POTION.DOWN]++;
-                    Destroy(collider.gameObject);
+                    ammo[(int) POTION.DOWN] += 0.25f;
+                    Destroy(other.gameObject);
                 }
                 break;
             case "CollectableIcePotion":
                 if (ammo[(int) POTION.LEFT] < maxAmmo) {
-                    ammo[(int) POTION.LEFT]++;
-                    Destroy(collider.gameObject);
+                    ammo[(int) POTION.LEFT] += 0.25f;
+                    Destroy(other.gameObject);
                 }
                 break;
             case "CollectableFirePotion":
                 if (ammo[(int) POTION.RIGHT] < maxAmmo) {
-                    ammo[(int) POTION.RIGHT]++;
-                    Destroy(collider.gameObject);
+                    ammo[(int) POTION.RIGHT] += 0.25f;
+                    Destroy(other.gameObject);
                 }
                 break;
         }
