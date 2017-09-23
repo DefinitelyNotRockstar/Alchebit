@@ -12,7 +12,7 @@ public enum POTION {
 public class Player : MonoBehaviour {
 
     public Potion[] potions;
-    public int health;
+    public float health;
 
     private readonly Vector2[] directions = {
         Vector2.up,
@@ -21,6 +21,7 @@ public class Player : MonoBehaviour {
         Vector2.right
     };
 
+    private Rigidbody2D playerRigidbody;
     private int[] ammo;
 
     private void Awake() {
@@ -31,6 +32,8 @@ public class Player : MonoBehaviour {
         potions[(int) POTION.RIGHT] = FindObjectOfType<FirePotion>();
 
         ammo = new int[4] { 15, 15, 15, 15 };
+
+        playerRigidbody = GetComponent<Rigidbody2D>();
     }
 
 
@@ -42,8 +45,10 @@ public class Player : MonoBehaviour {
         }
     }
 
-    public void ApplyDamage(int damageReceived) {
+    public void ApplyDamage(float damageReceived, Vector2 enemyPosition) {
         health -= damageReceived;
+        playerRigidbody.AddForce(((Vector2) transform.position - enemyPosition).normalized * 500, ForceMode2D.Force);
+
         if (health <= 0) {
             Debug.Log("YOU DIED");
         }

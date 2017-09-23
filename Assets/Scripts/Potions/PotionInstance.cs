@@ -10,13 +10,10 @@ public class PotionInstance : MonoBehaviour {
 
     public Vector2 direction;
     public float speed;
-    public int damage;
-
-    private Rigidbody2D potionRigidbody;
+    public float damage;
 
     private void Awake() {
         direction = Vector2.zero;
-        potionRigidbody = GetComponent<Rigidbody2D>();
     }
 
     private void Update() {
@@ -24,7 +21,8 @@ public class PotionInstance : MonoBehaviour {
     }
 
     private void Move() {
-        potionRigidbody.MovePosition((Vector2) transform.position + direction * speed);
+        transform.position =  (Vector2) transform.position + direction * speed;
+        //potionRigidbody.MovePosition((Vector2) transform.position + direction * speed);
     }
 
     public void OnCollisionEnter2D(Collision2D collision) {

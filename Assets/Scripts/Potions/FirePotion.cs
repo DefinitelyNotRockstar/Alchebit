@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FirePotion : Potion {
 
-    public int explosionDamage;
+    public float explosionDamage;
     public float explosionPower;
     public float explosionRadius;
 
@@ -17,9 +17,13 @@ public class FirePotion : Potion {
 
                     Rigidbody2D rb = hit.gameObject.GetComponent<Rigidbody2D>();
 
-                    if (rb != null){
-                        rb.AddForce((hit.transform.position - explosionPos).normalized * explosionPower, ForceMode2D.Force);
-                        hit.gameObject.GetComponent<Enemy>().ApplyDamage(explosionDamage);                 
+                    if (rb != null) {
+                        if (hit == collision.collider) {
+                            rb.AddForce(direction * explosionPower, ForceMode2D.Force);
+                        } else {
+                            rb.AddForce((hit.transform.position - explosionPos).normalized * explosionPower, ForceMode2D.Force);
+                        }
+                        hit.gameObject.GetComponent<Enemy>().ApplyDamage(explosionDamage);
                     }
                 }
             }
