@@ -40,8 +40,6 @@ public class DropsGenerator : MonoBehaviour {
 
             posOffset = new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f));
 
-            Debug.Log("Dropping");
-
 			GameObject collectablePotion = Instantiate(collectablePotions[(int) type]);
 			collectablePotion.transform.position = position + posOffset;
         }

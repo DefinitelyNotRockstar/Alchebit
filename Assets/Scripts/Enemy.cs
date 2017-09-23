@@ -6,13 +6,16 @@ public class Enemy : MonoBehaviour {
 
     public float health;
     public float damage;
+    public int reward;
 
     private Player player;
     private DropsGenerator dropsGenerator;
+    private Score score;
 
     private void Awake() {
         player = FindObjectOfType<Player>();
         dropsGenerator = FindObjectOfType<DropsGenerator>();
+        score = FindObjectOfType<Score>();
     }
 
 
@@ -20,6 +23,7 @@ public class Enemy : MonoBehaviour {
         health -= damageReceived;
         if (health <= 0) {
             dropsGenerator.DropFromEnemy(transform.position, sourceType);
+            score.AddScore(reward);
             Destroy(gameObject);
         }
     }

@@ -133,6 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   damage: 2
+  reward: 10
 --- !u!212 &212779728574195480
 SpriteRenderer:
   m_ObjectHideFlags: 1

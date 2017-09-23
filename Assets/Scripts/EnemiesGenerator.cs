@@ -22,8 +22,9 @@ public class EnemiesGenerator : MonoBehaviour {
     }
 
     private void Update() {
-        if (Time.time - startTime > timeBetweenWaves){         
-			createEnemies();
+        if (Time.time - startTime > timeBetweenWaves) {
+            initialEnemies += 5;
+            createEnemies();
         }
     }
 
