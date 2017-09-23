@@ -12,7 +12,9 @@ public enum POTION {
 public class Player : MonoBehaviour {
 
     public Potion[] potions;
-    private static Vector2[] directions = {
+    public int health;
+
+    private readonly Vector2[] directions = {
         Vector2.up,
         Vector2.down,
         Vector2.left,
@@ -32,10 +34,18 @@ public class Player : MonoBehaviour {
     }
 
 
+
     public void ThrowPotion(POTION type) {
         if (ammo[(int) type] > 0) {
             potions[(int) type].InstantiatePotion(transform.position, directions[(int) type]);
             ammo[(int) type]--;
+        }
+    }
+
+    public void ApplyDamage(int damageReceived) {
+        health -= damageReceived;
+        if (health <= 0) {
+            Debug.Log("YOU DIED");
         }
     }
 

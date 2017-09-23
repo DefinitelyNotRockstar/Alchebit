@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class PotionInstance : MonoBehaviour {
 
+    public delegate bool ActivatePotion(Collision2D collision);
+    public ActivatePotion _potionFunction;
+
+
     public Vector2 direction;
     public float speed;
+    public int damage;
 
     private Rigidbody2D potionRigidbody;
 
@@ -22,7 +27,9 @@ public class PotionInstance : MonoBehaviour {
         potionRigidbody.MovePosition((Vector2) transform.position + direction * speed);
     }
 
-	public void OnCollisionEnter2D(Collision2D collision) {
-		Destroy(gameObject);
-	}
+    public void OnCollisionEnter2D(Collision2D collision) {
+        if (_potionFunction(collision)) {
+            Destroy(gameObject);
+        }
+    }
 }

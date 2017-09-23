@@ -7,6 +7,7 @@ public class Potion : MonoBehaviour {
 
     public GameObject potionPrefab;
     public float potionSpeed;
+    public int potionDamage; // TODO reimplement for each potion (area effects, etc.)
 
     public GameObject InstantiatePotion(Vector2 position, Vector2 direction) {
 		GameObject potion = Instantiate(potionPrefab);
@@ -14,8 +15,21 @@ public class Potion : MonoBehaviour {
 		PotionInstance potionInstance = potion.GetComponent<PotionInstance>();
 		potionInstance.direction = direction;
 		potionInstance.speed = potionSpeed;
+        potionInstance.damage = potionDamage;
+        potionInstance._potionFunction = OnActivation;
 
 
 		return potion;
+    }
+
+    public virtual bool OnActivation(Collision2D collision){
+		GameObject collisionObject = collision.collider.gameObject;
+		if (!collisionObject.CompareTag("Player")) {
+			if (collisionObject.CompareTag("Enemy")) {
+                collisionObject.GetComponent<Enemy>().ApplyDamage(potionDamage);
+			}
+            return true;
+		}
+        return false;
     }
 }
