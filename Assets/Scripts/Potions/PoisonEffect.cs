@@ -15,7 +15,7 @@ public class PoisonEffect : MonoBehaviour {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, poisonRadius);
         foreach (Collider2D hit in colliders) {
             if(hit.gameObject.CompareTag("Enemy")){
-                hit.gameObject.GetComponent<Enemy>().ApplyDamage(FindObjectOfType<PoisonPotion>().potionDamage);
+                hit.gameObject.GetComponent<Enemy>().ApplyDamage(FindObjectOfType<PoisonPotion>().potionDamage, POTION.DOWN);
             }
         }
     }

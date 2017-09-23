@@ -8,15 +8,18 @@ public class Enemy : MonoBehaviour {
     public float damage;
 
     private Player player;
+    private DropsGenerator dropsGenerator;
 
     private void Awake() {
         player = FindObjectOfType<Player>();
+        dropsGenerator = FindObjectOfType<DropsGenerator>();
     }
 
 
-    public void ApplyDamage(float damageReceived) {
+    public void ApplyDamage(float damageReceived, POTION sourceType) {
         health -= damageReceived;
         if (health <= 0) {
+            dropsGenerator.DropFromEnemy(transform.position, sourceType);
             Destroy(gameObject);
         }
     }

@@ -13,6 +13,7 @@ public class IcePotion : Potion {
 			if (collision.gameObject.CompareTag("Enemy")) {
 				GameObject poison = Instantiate(icePrefab);
 				poison.transform.position = collision.collider.transform.position;
+                collision.gameObject.GetComponent<Enemy>().ApplyDamage(potionDamage, POTION.LEFT);
 			}
 			return true;
 		}

@@ -29,7 +29,7 @@ public class Potion : MonoBehaviour {
 		GameObject collisionObject = collision.collider.gameObject;
 		if (!collisionObject.CompareTag("Player")) {
 			if (collisionObject.CompareTag("Enemy")) {
-                collisionObject.GetComponent<Enemy>().ApplyDamage(potionDamage);
+                collisionObject.GetComponent<Enemy>().ApplyDamage(potionDamage, POTION.UP);
 			}
             return true;
 		}

@@ -117,6 +117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 300134392}
   - component: {fileID: 300134398}
+  - component: {fileID: 300134399}
   - component: {fileID: 300134393}
   - component: {fileID: 300134394}
   - component: {fileID: 300134397}
@@ -172,7 +173,7 @@ MonoBehaviour:
     type: 2}
   potionSpeed: 0.2
   potionDamage: 5
-  explosionDamage: 2
+  explosionDamage: 5
   explosionPower: 200
   explosionRadius: 2
 --- !u!114 &300134395
@@ -206,7 +207,7 @@ MonoBehaviour:
   potionPrefab: {fileID: 1391473680691640, guid: 10adeede2963d4eed930ee36e51f9027,
     type: 2}
   potionSpeed: 0.5
-  potionDamage: 0
+  potionDamage: 2
   icePrefab: {fileID: 1589110676077758, guid: f09133a7723fe4becbe9a52fe95e9880, type: 2}
 --- !u!114 &300134397
 MonoBehaviour:
@@ -236,8 +237,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 1412800667141072, guid: b36d7202c70d5447a8ce483e9b43a4a1,
     type: 2}
-  timeBetweenWaves: 10
-  initialEnemies: 5
+  timeBetweenWaves: 30
+  initialEnemies: 10
+--- !u!114 &300134399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 300134391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 223cd67a77ccd4aa78dfc9eaf6508c26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomDropCooldown: 10
+  maxDropFromEnemy: 1
+  minDropFromEnemy: 4
+  collectablePotions:
+  - {fileID: 1015947760534846, guid: eb31e5200a5be41809b71be9c3490a2c, type: 2}
+  - {fileID: 1015947760534846, guid: d72c27e855db34baea13c90284753859, type: 2}
+  - {fileID: 1015947760534846, guid: 4c18256f65558402d9a4b10366635c76, type: 2}
+  - {fileID: 1015947760534846, guid: 7ce1d19db1bb44b33be309af6a236452, type: 2}
 --- !u!1 &435816444
 GameObject:
   m_ObjectHideFlags: 0

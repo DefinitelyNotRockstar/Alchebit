@@ -23,7 +23,7 @@ public class FirePotion : Potion {
                         } else {
                             rb.AddForce((hit.transform.position - explosionPos).normalized * explosionPower, ForceMode2D.Force);
                         }
-                        hit.gameObject.GetComponent<Enemy>().ApplyDamage(explosionDamage);
+                        hit.gameObject.GetComponent<Enemy>().ApplyDamage(explosionDamage, POTION.RIGHT);
                     }
                 }
             }

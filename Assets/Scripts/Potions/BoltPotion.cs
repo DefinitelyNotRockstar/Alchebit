@@ -6,7 +6,7 @@ public class BoltPotion : Potion {
     override public bool OnActivation(Collision2D collision) {
         if (!collision.gameObject.CompareTag("Player")) {
             if (collision.gameObject.CompareTag("Enemy"))
-                collision.gameObject.GetComponent<Enemy>().ApplyDamage(potionDamage);
+                collision.gameObject.GetComponent<Enemy>().ApplyDamage(potionDamage, POTION.UP);
             return true;
         }
         return false;
