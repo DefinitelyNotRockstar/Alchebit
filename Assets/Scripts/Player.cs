@@ -17,6 +17,7 @@ public class Player : MonoBehaviour {
     public float hitDelay = 0.2f;
     public float DamageForce = 1000.0f;
     public float pickUpValue = 0.25f;
+    public Transform potionOrigin;
 
     private readonly Vector2[] directions = {
         Vector2.up,
@@ -57,7 +58,7 @@ public class Player : MonoBehaviour {
 
     public void ThrowPotion(POTION type) {
         if (ammo[(int) type] >= 1f) {
-            potions[(int) type].InstantiatePotion(transform.position, directions[(int) type]);
+            potions[(int) type].InstantiatePotion(potionOrigin.position, directions[(int) type]);
             ammo[(int) type]--;
             ammoButtonsAnimator.SetValue(type, Mathf.Floor(ammo[(int)type]) / maxAmmo);
 		}

@@ -7,11 +7,22 @@ public class FirePotion : Potion {
     public float explosionDamage;
     public float explosionPower;
     public float explosionRadius;
+	public GameObject explosionPrefab;
+    public GameObject firePrefab;
 
-    override public bool OnActivation(Collision2D collision) {
-        if (!collision.gameObject.CompareTag("Player")) {
-            Vector3 explosionPos = collision.transform.position;
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(explosionPos, explosionRadius);
+	override public bool OnActivation(Collision2D collision) {
+
+		GameObject fire = Instantiate(firePrefab);
+        fire.transform.position = collision.contacts[0].point;
+
+        Vector3 explosionPos = collision.transform.position;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(explosionPos, explosionRadius);
+
+
+		GameObject explosionInstance = Instantiate(explosionPrefab);
+		explosionInstance.transform.position = collision.contacts[0].point;
+        explosionInstance.GetComponentInChildren<ExplosionAnimator>().type = POTION.RIGHT;
+
             foreach (Collider2D hit in colliders) {
                 if (hit.gameObject.CompareTag("Enemy")) {
 
@@ -29,7 +40,5 @@ public class FirePotion : Potion {
             }
             return true;
         }
-        return false;
-    }
 
 }

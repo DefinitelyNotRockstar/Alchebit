@@ -8,20 +8,39 @@ public class PotionInstance : MonoBehaviour {
     public ActivatePotion _potionFunction;
 
 
-    public Vector2 direction;
     public float speed;
     public float damage;
 
+	private Vector2 direction;
+
+    public float explodeVelocityThresh = 0.1f;
+
+	private Rigidbody2D rigidBody;
+
     private void Awake() {
+        rigidBody = GetComponent<Rigidbody2D>();
         direction = Vector2.zero;
     }
 
     private void Update() {
+
+        if(rigidBody.velocity.magnitude < explodeVelocityThresh){
+
+
+            Collision2D aux = new Collision2D();
+            _potionFunction(null);
+        }
+
         Move();
     }
 
+    public void StartMoving(Vector2 o_direction){
+        direction = o_direction;
+        rigidBody.AddForce(direction.normalized * speed , ForceMode2D.Force);
+    }
+
     private void Move() {
-        transform.position =  (Vector2) transform.position + direction * speed;
+        //transform.position =  (Vector2) transform.position + direction * speed;
         //potionRigidbody.MovePosition((Vector2) transform.position + direction * speed);
     }
 

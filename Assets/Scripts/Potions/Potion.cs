@@ -15,12 +15,11 @@ public class Potion : MonoBehaviour {
 		GameObject potion = Instantiate(potionPrefab);
 		potion.transform.position = position;
 		PotionInstance potionInstance = potion.GetComponent<PotionInstance>();
-		potionInstance.direction = direction;
         this.direction = direction;
 		potionInstance.speed = potionSpeed;
         potionInstance.damage = potionDamage;
         potionInstance._potionFunction = OnActivation;
-
+        potionInstance.StartMoving(direction);
 
 		return potion;
     }

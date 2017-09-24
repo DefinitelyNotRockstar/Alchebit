@@ -77,19 +77,23 @@ public class PlayerController : MonoBehaviour {
 
     private void Shoot() {
         if (Input.GetKeyDown(KeyCode.UpArrow)) {
+            animator.Play("ThrowingPotion");
             player.ThrowPotion(POTION.UP);
             return;
         }
         if (Input.GetKeyDown(KeyCode.DownArrow)) {
+			animator.Play("ThrowingPotion");
 			player.ThrowPotion(POTION.DOWN);
 			return;
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow)) {
-            player.ThrowPotion(POTION.LEFT);
+			animator.Play("ThrowingPotion");
+			player.ThrowPotion(POTION.LEFT);
 			return;
         }
         if (Input.GetKeyDown(KeyCode.RightArrow)) {
-            player.ThrowPotion(POTION.RIGHT);
+			animator.Play("ThrowingPotion");
+			player.ThrowPotion(POTION.RIGHT);
 			return;
         }
     }

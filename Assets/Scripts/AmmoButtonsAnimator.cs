@@ -10,7 +10,6 @@ public class AmmoButtonsAnimator : MonoBehaviour {
 
     public void SetValue(POTION type, float value){
 
-        Debug.Log(type.ToString() + value.ToString());
         animators[(int)type].SetFloat("Filled",value);
 
     }

@@ -24,7 +24,15 @@ public class LightFlicker : MonoBehaviour {
     private float timeCounter;
     private float rand1, rand2, rand3, rand4;
 
+    private float strength = 1.0f;
+
+
+
     Vector3 originalPosition;
+
+    public void SetGeneralStrengh(float value){
+        strength = Mathf.Clamp(value, 0.0f, 1.0f);
+    }
 
     private void Awake()
     {
@@ -46,13 +54,15 @@ public class LightFlicker : MonoBehaviour {
 		diffIntensity = maxIntensity - minIntensity;
         
         timeCounter += Time.fixedDeltaTime;
-        theLight.range = minRange + diffRange * (Mathf.PerlinNoise(timeCounter * rangeSpeed, rand1));
-        theLight.intensity = minIntensity + minRange * Mathf.PerlinNoise(timeCounter * intensitySpeed, rand2);
+        theLight.range = strength * (minRange + diffRange * (Mathf.PerlinNoise(timeCounter * rangeSpeed, timeCounter * rangeSpeed + rand1)));
+        theLight.intensity = strength * (minIntensity + minRange * Mathf.PerlinNoise(timeCounter * intensitySpeed, timeCounter * rangeSpeed + rand2));
 
         Vector3 newPosition = originalPosition;
-        newPosition.x += movementAllowance * ((Mathf.PerlinNoise(timeCounter * movementSpeed, rand3) * 2.0f) - 1.0f);
-        newPosition.y += movementAllowance * ((Mathf.PerlinNoise(timeCounter * movementSpeed, rand4) * 2.0f) - 1.0f);
+        newPosition.x += movementAllowance * strength * (((Mathf.PerlinNoise(timeCounter * movementSpeed + rand4 , timeCounter * movementSpeed + rand3) * 2.0f) - 1.0f));
+        newPosition.y += movementAllowance * strength * (((Mathf.PerlinNoise(timeCounter * movementSpeed + rand4, timeCounter * movementSpeed + rand4) * 2.0f) - 1.0f));
 
         theLight.transform.localPosition = newPosition;
 	}
+
+
 }

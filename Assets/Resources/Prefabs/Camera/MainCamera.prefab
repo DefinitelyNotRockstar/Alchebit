@@ -399,7 +399,7 @@ MonoBehaviour:
   minRange: 0.7
   maxRange: 1.6
   minIntensity: 5
-  maxIntensity: 10
+  maxIntensity: 15
   intensitySpeed: 1
   rangeSpeed: 1
   movementAllowance: 1
