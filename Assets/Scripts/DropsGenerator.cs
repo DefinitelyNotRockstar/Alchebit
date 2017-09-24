@@ -41,7 +41,8 @@ public class DropsGenerator : MonoBehaviour {
             posOffset = new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f));
 
 			GameObject collectablePotion = Instantiate(collectablePotions[(int) type]);
-			collectablePotion.transform.position = position + posOffset;
+			collectablePotion.transform.position = position;
+            collectablePotion.GetComponent<Rigidbody2D>().AddForce(posOffset.normalized,ForceMode2D.Impulse);
         }
     }
 

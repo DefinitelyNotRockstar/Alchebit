@@ -46,3 +46,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ground
+    uniqueID: 2695486909
+    locked: 0
+  - name: Splashes
+    uniqueID: 510672563
+    locked: 0
+  - name: Entities
+    uniqueID: 4092554339
+    locked: 0
+  - name: Layout
+    uniqueID: 119943241
+    locked: 0
