@@ -37,6 +37,7 @@ public class PotionInstance : MonoBehaviour {
 
     public void StartMoving(Vector2 o_direction){
         direction = o_direction;
+        rigidBody.velocity = new Vector2(explodeVelocityThresh, explodeVelocityThresh);
         rigidBody.AddForce(direction.normalized * speed , ForceMode2D.Force);
     }
 

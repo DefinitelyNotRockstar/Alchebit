@@ -11,6 +11,8 @@ public class FirePotion : Potion {
     public GameObject firePrefab;
 
     override public bool OnActivation(Collider2D other, Vector2 collisionPos) {
+		if (other.gameObject.CompareTag("Player"))
+			return false;
 
         GameObject fire = Instantiate(firePrefab);
         fire.transform.position = collisionPos;

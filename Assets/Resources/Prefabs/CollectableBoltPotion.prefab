@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4669859758963274}
   - component: {fileID: 58519063094558444}
   - component: {fileID: 50166974705541048}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CollectableBoltPotion
   m_TagString: CollectableBoltPotion
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4788287934040902}
   - component: {fileID: 212506350173640730}
   - component: {fileID: 95633409485406860}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CollectablePotionSprite
   m_TagString: CollectableBoltPotion
   m_Icon: {fileID: 0}

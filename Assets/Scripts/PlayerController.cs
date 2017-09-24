@@ -16,27 +16,30 @@ public class PlayerController : MonoBehaviour {
     private float lastXDirection;
 
     //Movement
-	private Vector2 movement;
+    private Vector2 movement;
     private float remainingRestrictionTime;
 
+    //Sound
+    private AudioSource audioSource;
 
 
-	public void RestrictMovement(float time){
+
+    public void RestrictMovement(float time) {
         remainingRestrictionTime = time;
     }
 
-	public void AnimateDamage()
-	{
+    public void AnimateDamage() {
 
-		animator.Play("TakingDamage");
+        animator.Play("TakingDamage");
 
-	}
+    }
 
 
     private void Awake() {
         playerRigidBody = GetComponent<Rigidbody2D>();
         player = GetComponent<Player>();
         animator = GetComponentInChildren<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start() {
@@ -49,64 +52,68 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        if (remainingRestrictionTime > 0.0f)
-        {
+        if (remainingRestrictionTime > 0.0f) {
             remainingRestrictionTime -= Time.fixedDeltaTime;
-            if(remainingRestrictionTime < 0.0f){
+            if (remainingRestrictionTime < 0.0f) {
                 playerRigidBody.velocity = Vector2.zero;
             }
-        }
-        else
-        {
+        } else {
             float lh = Input.GetAxisRaw("Horizontal");
             float lv = Input.GetAxisRaw("Vertical");
             Move(lh, lv);
         }
-	}
+    }
 
-	private void Move(float lh, float lv) {
-		movement.Set(lh, lv);
+    private void Move(float lh, float lv) {
+        movement.Set(lh, lv);
         if (movement.magnitude > movementThreashold) {
             lastXDirection = movement.normalized.x;
             movement = movement.normalized * speed / 10;
             playerRigidBody.velocity = movement;
-        }else{
+        } else {
             movement = Vector2.zero;
         }
-	}
+    }
 
     private void Shoot() {
         if (Input.GetKeyDown(KeyCode.UpArrow)) {
             animator.Play("ThrowingPotion");
             player.ThrowPotion(POTION.UP);
+            PlayThrowSound();
             return;
         }
         if (Input.GetKeyDown(KeyCode.DownArrow)) {
-			animator.Play("ThrowingPotion");
-			player.ThrowPotion(POTION.DOWN);
-			return;
+            animator.Play("ThrowingPotion");
+            player.ThrowPotion(POTION.DOWN);
+            PlayThrowSound();
+            return;
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow)) {
-			animator.Play("ThrowingPotion");
-			player.ThrowPotion(POTION.LEFT);
-			return;
+            animator.Play("ThrowingPotion");
+            player.ThrowPotion(POTION.LEFT);
+            PlayThrowSound();
+            return;
         }
         if (Input.GetKeyDown(KeyCode.RightArrow)) {
-			animator.Play("ThrowingPotion");
-			player.ThrowPotion(POTION.RIGHT);
-			return;
+            animator.Play("ThrowingPotion");
+            player.ThrowPotion(POTION.RIGHT);
+            PlayThrowSound();
+            return;
         }
     }
 
 
     private void UpdateAnimations() {
 
-        animator.SetBool("IsMoving",(this.movement.magnitude > 0.0f));
-        animator.SetFloat("XSpeed",movement.normalized.x);
-        animator.SetFloat("XLastDirection",lastXDirection);
+        animator.SetBool("IsMoving", (this.movement.magnitude > 0.0f));
+        animator.SetFloat("XSpeed", movement.normalized.x);
+        animator.SetFloat("XLastDirection", lastXDirection);
 
     }
-        
 
-    
+    private void PlayThrowSound() {
+        audioSource.Play();
+    }
+
+
 }

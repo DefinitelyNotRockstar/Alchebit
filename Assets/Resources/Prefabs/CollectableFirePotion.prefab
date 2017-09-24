@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4669859758963274}
   - component: {fileID: 58519063094558444}
   - component: {fileID: 50490015265787838}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CollectableFirePotion
   m_TagString: CollectableFirePotion
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4788287934040902}
   - component: {fileID: 212506350173640730}
   - component: {fileID: 95935973576178414}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CollectablePotionSprite
   m_TagString: CollectableFirePotion
   m_Icon: {fileID: 0}

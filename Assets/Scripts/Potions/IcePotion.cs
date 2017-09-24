@@ -9,6 +9,8 @@ public class IcePotion : Potion {
     public GameObject explosionPrefab;
 
     override public bool OnActivation(Collider2D other, Vector2 collisionPos) {
+		if (other.gameObject.CompareTag("Player"))
+			return false;
 
         GameObject poison = Instantiate(icePrefab);
         poison.transform.position = collisionPos;
