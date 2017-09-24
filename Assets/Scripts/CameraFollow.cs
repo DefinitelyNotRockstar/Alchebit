@@ -12,11 +12,21 @@ public class CameraFollow : MonoBehaviour {
 
     //Camera myCamera;
 
+    public float mapX = 14.0f;
+    public float mapY = 11.0f;
+
+    private float minX;
+    private float maxX;
+    private float minY;
+    private float maxY;
+
 
     // Use this for initialization
     void Start () {
 
-        //myCamera = GetComponent<Camera>();
+
+     
+
 
 	}
 	
@@ -48,4 +58,23 @@ public class CameraFollow : MonoBehaviour {
 
 
 	}
+
+    private void LateUpdate()
+    {
+
+		float vertExtent = Camera.main.orthographicSize;
+		float horzExtent = vertExtent * Screen.width / Screen.height;
+
+		minX = horzExtent - mapX / 2.0f;
+		maxX = mapX / 2.0f - horzExtent;
+		minY = vertExtent - mapY / 2.0f;
+		maxY = mapY / 2.0f - vertExtent;
+		
+			Vector3 v3 = transform.position;
+			v3.x = Mathf.Clamp(v3.x, minX, maxX);
+			v3.y = Mathf.Clamp(v3.y, minY, maxY);
+			transform.position = v3;
+		
+    }
+
 }
