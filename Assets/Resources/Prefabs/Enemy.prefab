@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  damage: 2
+  damage: 1
   reward: 10
   type: 0
   spawnPrefab: {fileID: 1868596198848502, guid: d539dbfea170d4b36ab2c156c0eb3387,

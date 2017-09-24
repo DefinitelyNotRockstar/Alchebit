@@ -19,6 +19,8 @@ public class Player : MonoBehaviour {
     public float DamageForce = 1000.0f;
     public float pickUpValue = 0.25f;
     public Transform potionOrigin;
+    public GameObject heartPrefab;
+    public GameObject healthBar;
 
     private readonly Vector2[] directions = {
         Vector2.up,
@@ -30,7 +32,7 @@ public class Player : MonoBehaviour {
     private Rigidbody2D playerRigidbody;
     private PlayerController playerController;
     private AmmoButtonsAnimator ammoButtonsAnimator;
-
+    private List<GameObject> hearts = new List<GameObject>();
 
     private float[] ammo;
 
@@ -48,21 +50,28 @@ public class Player : MonoBehaviour {
         playerController = GetComponent<PlayerController>();
         ammoButtonsAnimator = FindObjectOfType<AmmoButtonsAnimator>();
 
-		for (short i = 0; i < 4; i++)
-		{
-            ammoButtonsAnimator.SetValue((POTION)i, Mathf.Floor(ammo[i]) / maxAmmo);
-		}
+        for (short i = 0; i < 4; i++) {
+            ammoButtonsAnimator.SetValue((POTION) i, Mathf.Floor(ammo[i]) / maxAmmo);
+        }
 
     }
 
-
+    private void Start() {
+        GameObject heartInstance;
+        for (int i = 0; i < health; i++) {
+            heartInstance = Instantiate(heartPrefab);
+            heartInstance.transform.position = Vector2.zero;
+            heartInstance.transform.parent = healthBar.transform;
+            heartInstance.transform.localPosition = new Vector2(i * 0.75f, 0);
+        }
+    }
 
     public void ThrowPotion(POTION type) {
         if (ammo[(int) type] >= 1f) {
             potions[(int) type].InstantiatePotion(potionOrigin.position, directions[(int) type]);
             ammo[(int) type]--;
-            ammoButtonsAnimator.SetValue(type, Mathf.Floor(ammo[(int)type]) / maxAmmo);
-		}
+            ammoButtonsAnimator.SetValue(type, Mathf.Floor(ammo[(int) type]) / maxAmmo);
+        }
     }
 
     public void ApplyDamage(float damageReceived, Vector2 enemyPosition) {
@@ -70,15 +79,16 @@ public class Player : MonoBehaviour {
         playerRigidbody.AddForce(((Vector2) transform.position - enemyPosition).normalized * DamageForce, ForceMode2D.Force);
         playerController.RestrictMovement(hitDelay);
         playerController.AnimateDamage();
+        UpdateHealth();
         if (health <= 0) {
             SceneManager.LoadScene("MainMenu");
         }
     }
 
-    private bool addAmmo(POTION type, float value){
-        if (ammo[(int)type] < maxAmmo) {
-            ammo[(int)type] += value;
-            ammoButtonsAnimator.SetValue(type, Mathf.Floor(ammo[(int)type]) / maxAmmo);
+    private bool addAmmo(POTION type, float value) {
+        if (ammo[(int) type] < maxAmmo) {
+            ammo[(int) type] += value;
+            ammoButtonsAnimator.SetValue(type, Mathf.Floor(ammo[(int) type]) / maxAmmo);
             return true;
         }
         return false;
@@ -87,29 +97,40 @@ public class Player : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D other) {
         switch (other.gameObject.tag) {
             case "CollectableBoltPotion":
-                if (addAmmo(POTION.UP,pickUpValue))
-                {
-					Destroy(other.gameObject);
+                if (addAmmo(POTION.UP, pickUpValue)) {
+                    Destroy(other.gameObject);
                 }
                 break;
             case "CollectablePoisonPotion":
-				if (addAmmo(POTION.DOWN, pickUpValue))
-				{
-					Destroy(other.gameObject);
-				}
-				break;
+                if (addAmmo(POTION.DOWN, pickUpValue)) {
+                    Destroy(other.gameObject);
+                }
+                break;
             case "CollectableIcePotion":
-				if (addAmmo(POTION.LEFT, pickUpValue))
-				{
-					Destroy(other.gameObject);
-				}
-				break;
+                if (addAmmo(POTION.LEFT, pickUpValue)) {
+                    Destroy(other.gameObject);
+                }
+                break;
             case "CollectableFirePotion":
-				if (addAmmo(POTION.RIGHT, pickUpValue))
-				{
-					Destroy(other.gameObject);
-				}
-				break;
+                if (addAmmo(POTION.RIGHT, pickUpValue)) {
+                    Destroy(other.gameObject);
+                }
+                break;
+        }
+    }
+
+    private void UpdateHealth() {
+        GameObject heartInstance;
+        foreach (Transform child in healthBar.GetComponentsInChildren<Transform>()) {
+            if (child != healthBar.transform)
+                Destroy(child.gameObject);
+        }
+
+        for (int i = 0; i < health; i++) {
+            heartInstance = Instantiate(heartPrefab);
+            heartInstance.transform.position = Vector2.zero;
+            heartInstance.transform.parent = healthBar.transform;
+            heartInstance.transform.localPosition = new Vector2(i * 0.75f, 0);
         }
     }
 

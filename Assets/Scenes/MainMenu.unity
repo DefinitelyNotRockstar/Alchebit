@@ -270,6 +270,17 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 0.386
       objectReference: {fileID: 0}
+    - target: {fileID: 114434508527328950, guid: 6ffc0c8cd75b5463791308ab560bad62,
+        type: 2}
+      propertyPath: heartPrefab
+      value: 
+      objectReference: {fileID: 1315336335421030, guid: 1b1a251aa0ca3459083739bc500c5acc,
+        type: 2}
+    - target: {fileID: 114434508527328950, guid: 6ffc0c8cd75b5463791308ab560bad62,
+        type: 2}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 1303112108}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ffc0c8cd75b5463791308ab560bad62, type: 2}
   m_IsPrefabParent: 0
@@ -312,19 +323,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114378216091835200, guid: c0b2a11215b094970b88bdb8bee60e0a,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 20299736702280938, guid: c0b2a11215b094970b88bdb8bee60e0a,
-        type: 2}
-      propertyPath: orthographic size
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c0b2a11215b094970b88bdb8bee60e0a, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1303112108 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1438620713181572, guid: c0b2a11215b094970b88bdb8bee60e0a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1249128492}
 --- !u!1 &1333912929
 GameObject:
   m_ObjectHideFlags: 0
