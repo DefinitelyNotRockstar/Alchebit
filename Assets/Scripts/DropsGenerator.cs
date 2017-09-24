@@ -34,8 +34,8 @@ public class DropsGenerator : MonoBehaviour {
         lastDropTime = Time.time;
     }
 
-    public void DropFromEnemy(Vector2 position, POTION excludedType) {
-        int nDrops = Random.Range(minDropFromEnemy, maxDropFromEnemy);
+    public void DropFromEnemy(Vector2 position, POTION excludedType, ENEMY level) {
+        int nDrops = Random.Range((int) level + minDropFromEnemy, (int) level + maxDropFromEnemy);
         POTION type;
         Vector2 posOffset;
         for (int i = 0; i < nDrops; i++) {

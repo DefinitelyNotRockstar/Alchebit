@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour {
     public void ApplyDamage(float damageReceived, POTION sourceType) {
         health -= damageReceived;
         if (health <= 0) {
-            dropsGenerator.DropFromEnemy(transform.position, sourceType);
+            dropsGenerator.DropFromEnemy(transform.position, sourceType, type);
             score.AddScore(reward);
             enemiesGenerator.ReportEnemyDeath();
 

@@ -68,6 +68,7 @@ public class Player : MonoBehaviour {
 
     public void ThrowPotion(POTION type) {
         if (ammo[(int) type] >= 1f) {
+            playerController.PlaySound(playerController.throwClip);
             potions[(int) type].InstantiatePotion(potionOrigin.position, directions[(int) type]);
             ammo[(int) type]--;
             ammoButtonsAnimator.SetValue(type, Mathf.Floor(ammo[(int) type]) / maxAmmo);
@@ -80,6 +81,7 @@ public class Player : MonoBehaviour {
         playerController.RestrictMovement(hitDelay);
         playerController.AnimateDamage();
         UpdateHealth();
+        playerController.PlaySound(playerController.takeDamageClip);
         if (health <= 0) {
             SceneManager.LoadScene("MainMenu");
         }
@@ -87,6 +89,7 @@ public class Player : MonoBehaviour {
 
     private bool addAmmo(POTION type, float value) {
         if (ammo[(int) type] < maxAmmo) {
+            playerController.PlaySound(playerController.pickupClip);
             ammo[(int) type] += value;
             ammoButtonsAnimator.SetValue(type, Mathf.Floor(ammo[(int) type]) / maxAmmo);
             return true;

@@ -21,6 +21,9 @@ public class PlayerController : MonoBehaviour {
 
     //Sound
     private AudioSource audioSource;
+    public AudioClip throwClip;
+    public AudioClip takeDamageClip;
+    public AudioClip pickupClip;
 
 
 
@@ -76,25 +79,25 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Shoot() {
-        if (Input.GetKeyDown(KeyCode.UpArrow)) {
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetAxis("RightV") > movementThreashold) {
             animator.Play("ThrowingPotion");
             player.ThrowPotion(POTION.UP);
 
             return;
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow)) {
+        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetAxis("RightV") < -movementThreashold) {
             animator.Play("ThrowingPotion");
             player.ThrowPotion(POTION.DOWN);
 
             return;
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow)) {
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetAxis("RightH") < -movementThreashold) {
             animator.Play("ThrowingPotion");
             player.ThrowPotion(POTION.LEFT);
 
             return;
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow)) {
+        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetAxis("RightH") > movementThreashold) {
             animator.Play("ThrowingPotion");
             player.ThrowPotion(POTION.RIGHT);
 
@@ -111,9 +114,12 @@ public class PlayerController : MonoBehaviour {
 
     }
 
-    private void PlayThrowSound() {
+    public void PlaySound(AudioClip clip) {
+        audioSource.clip = clip;
         audioSource.Play();
     }
+
+
 
 
 }

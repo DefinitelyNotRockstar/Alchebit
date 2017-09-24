@@ -618,6 +618,16 @@ Prefab:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 925369504}
+    - target: {fileID: 114434508527328950, guid: 6ffc0c8cd75b5463791308ab560bad62,
+        type: 2}
+      propertyPath: maxAmmo
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114506382091466390, guid: 6ffc0c8cd75b5463791308ab560bad62,
+        type: 2}
+      propertyPath: pickupClip
+      value: 
+      objectReference: {fileID: 8300000, guid: bc5daaec7e8a24c31b2d6ff353c11887, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ffc0c8cd75b5463791308ab560bad62, type: 2}
   m_IsPrefabParent: 0
@@ -964,6 +974,16 @@ Prefab:
         type: 2}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114472138153439888, guid: a3e68a77945f44bebbc57ed1f25f3160,
+        type: 2}
+      propertyPath: currentLevel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114253720730887750, guid: a3e68a77945f44bebbc57ed1f25f3160,
+        type: 2}
+      propertyPath: randomDropCooldown
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a3e68a77945f44bebbc57ed1f25f3160, type: 2}

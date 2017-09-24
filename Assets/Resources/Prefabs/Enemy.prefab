@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0a2dce2faedb4884910c59a95c951a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 10
   movementDelay: 0.3
 --- !u!114 &114519121384931144
 MonoBehaviour:
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b10ad3d97f25140b5b54553760eeb6b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 5
   damage: 1
   reward: 10
   type: 0

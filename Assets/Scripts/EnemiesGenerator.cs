@@ -30,34 +30,43 @@ public class EnemiesGenerator : MonoBehaviour {
 
     private Level[] levels = new Level[] {
         new Level(new int[] {
-            5,0,0,0
+            5,0,0,0,0
         }),
         new Level(new int[] {
-            5,2,0,0
+            5,2,0,0,0
         }),
         new Level(new int[] {
-            4,4,1,0
+            4,4,1,0,0
         }),
         new Level(new int[] {
-            3,3,3,0
+            3,3,3,0,0
         }),
         new Level(new int[] {
-            0,5,5,0
+            0,5,5,0,0
         }),
         new Level(new int[] {
-            0,3,6,1
+            0,3,6,1,0
         }),
         new Level(new int[] {
-            0,0,7,3
+            0,0,7,3,0
         }),
         new Level(new int[] {
-            0,0,5,5
+            0,0,5,5,0
         }),
         new Level(new int[] {
-            0,0,2,8
+            0,0,2,6,1
         }),
         new Level(new int[] {
-            0,0,0,9
+            0,0,0,7,2
+        }),
+        new Level(new int[] {
+            0,0,0,5,4
+        }),
+        new Level(new int[] {
+            0,0,0,3,7
+        }),
+        new Level(new int[] {
+            0,0,0,0,10
         }),
     };
 
@@ -69,7 +78,7 @@ public class EnemiesGenerator : MonoBehaviour {
     }
 
     private void Start() {
-        currentLevel = 0;
+        //currentLevel = 0;
         enemiesLeftAlive = 0;
     }
 
@@ -93,7 +102,7 @@ public class EnemiesGenerator : MonoBehaviour {
             } while (Vector2.Distance(enemyPosition, playerTransform.position) < 3.0f);
 
             GameObject enemy = Instantiate(enemyPrefab);
-			enemy.GetComponent<Enemy>().type = (ENEMY) Random.Range(0f, currentLevel);
+            enemy.GetComponent<Enemy>().type = (ENEMY) Random.Range(0f, currentLevel);
             //enemy.GetComponent<EnemyController>().UpdateAnimations();
             enemy.transform.position = enemyPosition;
 
@@ -113,8 +122,8 @@ public class EnemiesGenerator : MonoBehaviour {
 
 
         int level = currentLevel;
-		if (currentLevel < levels.Length - 1)
-			currentLevel++;
+        if (currentLevel < levels.Length - 1)
+            currentLevel++;
         enemiesLeftAlive = 0;
         for (int i = 0; i < levels[level].enemies.Length; i++) {
             enemiesLeftAlive += levels[level].enemies[i];
@@ -127,6 +136,8 @@ public class EnemiesGenerator : MonoBehaviour {
                 GameObject enemy = Instantiate(enemyPrefab);
                 enemy.transform.position = enemyPosition;
                 enemy.GetComponent<Enemy>().type = (ENEMY) i;
+                enemy.GetComponent<Enemy>().health *= i + 1;
+                enemy.GetComponent<EnemyController>().speed += i * 3;
 
                 yield return new WaitForSeconds(Random.Range(minTimeBetweenSpawns, maxTimeBetweenSpawns));
             }

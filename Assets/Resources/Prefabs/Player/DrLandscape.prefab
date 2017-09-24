@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212385339754170338}
   - component: {fileID: 95282970984989674}
   - component: {fileID: 114984333955772204}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlayerSprite
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 50405088902296382}
   - component: {fileID: 114434508527328950}
   - component: {fileID: 58885493116749808}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DrLandscape
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4097535273345062}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PotionOrigin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1983833826979966}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.191, y: 0.689, z: 0}
+  m_LocalPosition: {x: -0.191, y: 0.386, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4650061413356446}
@@ -96,7 +96,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1825386329996564}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4500650057447428}
@@ -169,10 +169,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   potions: []
   health: 20
-  maxAmmo: 15
+  maxAmmo: 999
   hitDelay: 0.3
   DamageForce: 1000
   pickUpValue: 0.25
+  potionOrigin: {fileID: 4097535273345062}
+  heartPrefab: {fileID: 1315336335421030, guid: 1b1a251aa0ca3459083739bc500c5acc,
+    type: 2}
+  healthBar: {fileID: 0}
 --- !u!114 &114506382091466390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -186,6 +190,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 50
   movementThreashold: 0.2
+  throwClip: {fileID: 8300000, guid: c6cff6815e0fe40cdaf2c7254a8f379f, type: 3}
+  takeDamageClip: {fileID: 8300000, guid: 156d4e1833faf44718e5287de5dc6bb2, type: 3}
 --- !u!114 &114984333955772204
 MonoBehaviour:
   m_ObjectHideFlags: 1
