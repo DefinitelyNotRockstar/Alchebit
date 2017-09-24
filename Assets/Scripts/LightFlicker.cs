@@ -54,8 +54,8 @@ public class LightFlicker : MonoBehaviour {
 		diffIntensity = maxIntensity - minIntensity;
         
         timeCounter += Time.fixedDeltaTime;
-        theLight.range = strength * (minRange + diffRange * (Mathf.PerlinNoise(timeCounter * rangeSpeed, timeCounter * rangeSpeed + rand1)));
-        theLight.intensity = strength * (minIntensity + minRange * Mathf.PerlinNoise(timeCounter * intensitySpeed, timeCounter * rangeSpeed + rand2));
+        theLight.range = strength * (minRange + diffRange * (Mathf.PerlinNoise(timeCounter * rangeSpeed,  rand1)));
+        theLight.intensity = strength * (minIntensity + diffIntensity * Mathf.PerlinNoise(timeCounter * intensitySpeed, rand2));
 
         Vector3 newPosition = originalPosition;
         newPosition.x += movementAllowance * strength * (((Mathf.PerlinNoise(timeCounter * movementSpeed + rand4 , timeCounter * movementSpeed + rand3) * 2.0f) - 1.0f));
