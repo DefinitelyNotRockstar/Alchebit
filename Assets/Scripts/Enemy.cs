@@ -2,11 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ENEMY {
+    LEVEL0 = 0,
+    LEVEL1 = 1,
+    LEVEL2 = 2,
+    LEVEL3 = 3,
+    LEVEL4 = 4
+}
+
+
 public class Enemy : MonoBehaviour {
 
     public float health;
     public float damage;
     public int reward;
+    public ENEMY type;
 
     private Player player;
     private DropsGenerator dropsGenerator;

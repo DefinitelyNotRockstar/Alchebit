@@ -79,25 +79,25 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.UpArrow)) {
             animator.Play("ThrowingPotion");
             player.ThrowPotion(POTION.UP);
-            PlayThrowSound();
+
             return;
         }
         if (Input.GetKeyDown(KeyCode.DownArrow)) {
             animator.Play("ThrowingPotion");
             player.ThrowPotion(POTION.DOWN);
-            PlayThrowSound();
+
             return;
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow)) {
             animator.Play("ThrowingPotion");
             player.ThrowPotion(POTION.LEFT);
-            PlayThrowSound();
+
             return;
         }
         if (Input.GetKeyDown(KeyCode.RightArrow)) {
             animator.Play("ThrowingPotion");
             player.ThrowPotion(POTION.RIGHT);
-            PlayThrowSound();
+
             return;
         }
     }
