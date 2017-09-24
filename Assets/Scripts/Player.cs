@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum POTION {
     UP = 0,
@@ -70,7 +71,7 @@ public class Player : MonoBehaviour {
         playerController.RestrictMovement(hitDelay);
         playerController.AnimateDamage();
         if (health <= 0) {
-            Debug.Log("YOU DIED");
+            SceneManager.LoadScene("MainMenu");
         }
     }
 
