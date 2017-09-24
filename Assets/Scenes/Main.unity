@@ -108,268 +108,6 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &300134391
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 300134392}
-  - component: {fileID: 300134398}
-  - component: {fileID: 300134399}
-  - component: {fileID: 300134393}
-  - component: {fileID: 300134394}
-  - component: {fileID: 300134397}
-  - component: {fileID: 300134396}
-  - component: {fileID: 300134395}
-  - component: {fileID: 300134400}
-  - component: {fileID: 300134401}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: GameController
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &300134392
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 300134391}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &300134393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 300134391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93dc7f13ce9de443992aef8d867e44e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  potionPrefab: {fileID: 1391473680691640, guid: 148cf4c990bf540a7b1d275c4d96df4f,
-    type: 2}
-  potionSpeed: 0
-  potionDamage: 0
---- !u!114 &300134394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 300134391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd6f1cd1d9c2247f9bb1a56afd63ff3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  potionPrefab: {fileID: 1391473680691640, guid: 8181f5f6586db415e9127adb7996e673,
-    type: 2}
-  potionSpeed: 60
-  potionDamage: 5
-  explosionDamage: 5
-  explosionPower: 200
-  explosionRadius: 2
-  explosionPrefab: {fileID: 1802610828594356, guid: ec3bf9ce75f444adab4bc069c9f1f864,
-    type: 2}
-  firePrefab: {fileID: 1212125518149868, guid: 5f630a79148f04e689f6fee1de3fb69f, type: 2}
---- !u!114 &300134395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 300134391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dfcb558740714b6698e268a487c24de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  potionPrefab: {fileID: 1391473680691640, guid: 7916611a9280b49788f674f81bc6be9c,
-    type: 2}
-  potionSpeed: 60
-  potionDamage: 0.1
-  poisonPrefab: {fileID: 1589110676077758, guid: ca9c6dfa9363d4f69862ee716fbb8d52,
-    type: 2}
-  explosionPrefab: {fileID: 1802610828594356, guid: ec3bf9ce75f444adab4bc069c9f1f864,
-    type: 2}
---- !u!114 &300134396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 300134391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 211553ea5b56f4234bd4f3e9b5ff2409, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  potionPrefab: {fileID: 1391473680691640, guid: 10adeede2963d4eed930ee36e51f9027,
-    type: 2}
-  potionSpeed: 60
-  potionDamage: 2
-  icePrefab: {fileID: 1589110676077758, guid: f09133a7723fe4becbe9a52fe95e9880, type: 2}
-  explosionPrefab: {fileID: 1802610828594356, guid: ec3bf9ce75f444adab4bc069c9f1f864,
-    type: 2}
---- !u!114 &300134397
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 300134391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00db41fd75a6341e98041015bc28add6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  potionPrefab: {fileID: 1391473680691640, guid: bf7d049e932424c8786817832092e686,
-    type: 2}
-  potionSpeed: 60
-  potionDamage: 10
-  explosionPrefab: {fileID: 1802610828594356, guid: ec3bf9ce75f444adab4bc069c9f1f864,
-    type: 2}
-  boltPrefab: {fileID: 0}
---- !u!114 &300134398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 300134391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d70cb380f5d014c8ba3033e5d4e67d4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 1412800667141072, guid: b36d7202c70d5447a8ce483e9b43a4a1,
-    type: 2}
-  timeBetweenWaves: 30
-  timeWhenNoEnemies: 3
-  initialEnemies: 5
-  enemiesAddedEachWave: 3
-  minTimeBetweenSpawns: 0.15
-  maxTimeBetweenSpawns: 0.5
-  mapLimits: {x: 6.5, y: 3.5}
---- !u!114 &300134399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 300134391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 223cd67a77ccd4aa78dfc9eaf6508c26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  randomDropCooldown: 10
-  maxDropFromEnemy: 1
-  minDropFromEnemy: 4
-  collectablePotions:
-  - {fileID: 1015947760534846, guid: eb31e5200a5be41809b71be9c3490a2c, type: 2}
-  - {fileID: 1015947760534846, guid: d72c27e855db34baea13c90284753859, type: 2}
-  - {fileID: 1015947760534846, guid: 4c18256f65558402d9a4b10366635c76, type: 2}
-  - {fileID: 1015947760534846, guid: 7ce1d19db1bb44b33be309af6a236452, type: 2}
---- !u!114 &300134400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 300134391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c75065337cfdc46678dfdc5548544b8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 807604805}
-  totalUpdatingTime: 0
-  minTimeChar: 0
-  maxTimeChar: 0
---- !u!82 &300134401
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 300134391}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6e8a8c1f67c46473cb70d6f3c372df80, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!1001 &365642683
 Prefab:
   m_ObjectHideFlags: 0
@@ -863,6 +601,53 @@ Transform:
   m_PrefabParentObject: {fileID: 4650061413356446, guid: 6ffc0c8cd75b5463791308ab560bad62,
     type: 2}
   m_PrefabInternal: {fileID: 636611632}
+--- !u!1001 &1858930152
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4995135908035558, guid: a3e68a77945f44bebbc57ed1f25f3160, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995135908035558, guid: a3e68a77945f44bebbc57ed1f25f3160, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995135908035558, guid: a3e68a77945f44bebbc57ed1f25f3160, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995135908035558, guid: a3e68a77945f44bebbc57ed1f25f3160, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995135908035558, guid: a3e68a77945f44bebbc57ed1f25f3160, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995135908035558, guid: a3e68a77945f44bebbc57ed1f25f3160, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995135908035558, guid: a3e68a77945f44bebbc57ed1f25f3160, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995135908035558, guid: a3e68a77945f44bebbc57ed1f25f3160, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114101171306233436, guid: a3e68a77945f44bebbc57ed1f25f3160,
+        type: 2}
+      propertyPath: scoreText
+      value: 
+      objectReference: {fileID: 807604805}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: a3e68a77945f44bebbc57ed1f25f3160, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &2121856374
 GameObject:
   m_ObjectHideFlags: 0

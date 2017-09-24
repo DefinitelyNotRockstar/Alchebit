@@ -27,7 +27,8 @@ public class Score : MonoBehaviour {
     public void AddScore(int points) {
         initialScore = score;
         score += points;
-		scoreText.gameObject.GetComponent<Animator>().Play("ScoreAnimation");
+        if (scoreText != null)
+            scoreText.gameObject.GetComponent<Animator>().Play("ScoreAnimation");
     }
 
 
