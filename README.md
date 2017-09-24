@@ -2,7 +2,7 @@
 
 [GameJam] Project for the 1st Alakajam! Developed by @pablotomico and @jazzzy
 
-![Banner](https://github.com/DefinitelyNotRockstar/Alchebit/Assets/RawAssets/Banner.png)
+![Banner](/Alchebit/Assets/RawAssets/Banner.png)
 
 **Alchebit** is a game where you control an alchemist and fight against hordes of enemies only using your magical potions which you create collecting the ingredients that said enemies drop.
 
