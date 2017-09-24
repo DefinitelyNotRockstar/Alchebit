@@ -82,25 +82,25 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Shoot() {
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetButton("3")) {
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown("joystick button 3") || Input.GetKeyDown("joystick button 19")) {
             animator.Play("ThrowingPotion");
             player.ThrowPotion(POTION.UP);
             lastPotion = Time.time;
             return;
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetButton("0")) {
+        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown("joystick button 0") || Input.GetKeyDown("joystick button 16")) {
             animator.Play("ThrowingPotion");
             player.ThrowPotion(POTION.DOWN);
             lastPotion = Time.time;
             return;
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetButton("2")) {
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown("joystick button 2") || Input.GetKeyDown("joystick button 18")) {
             animator.Play("ThrowingPotion");
             player.ThrowPotion(POTION.LEFT);
             lastPotion = Time.time;
             return;
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetButton("1")) {
+        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown("joystick button 1") || Input.GetKeyDown("joystick button 17")) {
             animator.Play("ThrowingPotion");
             player.ThrowPotion(POTION.RIGHT);
             lastPotion = Time.time;
