@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
+  movementDelay: 0.3
 --- !u!114 &114519121384931144
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -165,6 +166,10 @@ MonoBehaviour:
   damage: 2
   reward: 10
   type: 0
+  spawnPrefab: {fileID: 1868596198848502, guid: d539dbfea170d4b36ab2c156c0eb3387,
+    type: 2}
+  deathPrefab: {fileID: 1395912017194344, guid: f0ee1473fe53048849001832d0da9176,
+    type: 2}
 --- !u!212 &212779728574195480
 SpriteRenderer:
   m_ObjectHideFlags: 1

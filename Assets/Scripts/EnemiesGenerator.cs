@@ -2,13 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+struct Level {
+    public int[] enemies;
+    public Level(int[] enem) {
+        enemies = enem;
+    }
+}
+
+
 public class EnemiesGenerator : MonoBehaviour {
 
     public GameObject enemyPrefab;
     public float timeBetweenWaves;
     public float timeWhenNoEnemies;
     public int initialEnemies;
-    public int enemiesAddedEachWave;
     public float minTimeBetweenSpawns = 0.25f;
     public float maxTimeBetweenSpawns = 0.5f;
     public Vector2 mapLimits;
@@ -17,8 +24,43 @@ public class EnemiesGenerator : MonoBehaviour {
     private AudioSource audioSource;
     private int enemiesToSpawn;
     private float startTime;
-    private int enemiesLeftAlive;
-    private int currentLevel;
+    public int enemiesLeftAlive;
+    public int currentLevel;
+
+
+    private Level[] levels = new Level[] {
+        new Level(new int[] {
+            5,0,0,0
+        }),
+        new Level(new int[] {
+            5,2,0,0
+        }),
+        new Level(new int[] {
+            4,4,1,0
+        }),
+        new Level(new int[] {
+            3,3,3,0
+        }),
+        new Level(new int[] {
+            0,5,5,0
+        }),
+        new Level(new int[] {
+            0,3,6,1
+        }),
+        new Level(new int[] {
+            0,0,7,3
+        }),
+        new Level(new int[] {
+            0,0,5,5
+        }),
+        new Level(new int[] {
+            0,0,2,8
+        }),
+        new Level(new int[] {
+            0,0,0,9
+        }),
+    };
+
 
 
     private void Awake() {
@@ -35,9 +77,7 @@ public class EnemiesGenerator : MonoBehaviour {
 
         if (Time.time - startTime > timeBetweenWaves || enemiesLeftAlive == 0) {
             StartCoroutine("CreateEnemiesCoroutine");
-			initialEnemies += enemiesAddedEachWave;
-            if (currentLevel < 4)
-                currentLevel++;
+
         }
     }
 
@@ -53,9 +93,9 @@ public class EnemiesGenerator : MonoBehaviour {
             } while (Vector2.Distance(enemyPosition, playerTransform.position) < 3.0f);
 
             GameObject enemy = Instantiate(enemyPrefab);
+			enemy.GetComponent<Enemy>().type = (ENEMY) Random.Range(0f, currentLevel);
+            //enemy.GetComponent<EnemyController>().UpdateAnimations();
             enemy.transform.position = enemyPosition;
-            enemy.GetComponent<Enemy>().type = (ENEMY) Random.Range(0f, currentLevel);
-
 
             enemiesToSpawn--;
         }
@@ -66,27 +106,33 @@ public class EnemiesGenerator : MonoBehaviour {
         enemiesLeftAlive--;
     }
 
-    private IEnumerator CreateEnemiesCoroutine(){
+    private IEnumerator CreateEnemiesCoroutine() {
 
-		Vector2 enemyPosition;
-		startTime = Time.time;
-        enemiesToSpawn = initialEnemies;
-		enemiesLeftAlive = initialEnemies;
-        audioSource.Play();
-        while (enemiesToSpawn > 0) {
-            audioSource.Play();
-            do {
-                enemyPosition = new Vector2(Random.Range(-mapLimits.x, mapLimits.x), Random.Range(-mapLimits.y, mapLimits.y));
-            } while (Vector2.Distance(enemyPosition, playerTransform.position) < 3.0f);
-
-            GameObject enemy = Instantiate(enemyPrefab);
-            enemy.transform.position = enemyPosition;
-            enemy.GetComponent<Enemy>().type = (ENEMY) Random.Range(0f, currentLevel);
+        Vector2 enemyPosition;
+        startTime = Time.time;
 
 
-            enemiesToSpawn--;
-            yield return new WaitForSeconds(Random.Range(minTimeBetweenSpawns, maxTimeBetweenSpawns));
+        int level = currentLevel;
+		if (currentLevel < levels.Length - 1)
+			currentLevel++;
+        enemiesLeftAlive = 0;
+        for (int i = 0; i < levels[level].enemies.Length; i++) {
+            enemiesLeftAlive += levels[level].enemies[i];
+            for (int j = 0; j < levels[level].enemies[i]; j++) {
+                audioSource.Play();
+                do {
+                    enemyPosition = new Vector2(Random.Range(-mapLimits.x, mapLimits.x), Random.Range(-mapLimits.y, mapLimits.y));
+                } while (Vector2.Distance(enemyPosition, playerTransform.position) < 3.0f);
+
+                GameObject enemy = Instantiate(enemyPrefab);
+                enemy.transform.position = enemyPosition;
+                enemy.GetComponent<Enemy>().type = (ENEMY) i;
+
+                yield return new WaitForSeconds(Random.Range(minTimeBetweenSpawns, maxTimeBetweenSpawns));
+            }
         }
+
+
 
     }
 

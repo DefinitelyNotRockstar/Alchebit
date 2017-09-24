@@ -17,17 +17,25 @@ public class Enemy : MonoBehaviour {
     public float damage;
     public int reward;
     public ENEMY type;
+    public GameObject spawnPrefab;
+    public GameObject deathPrefab;
 
     private Player player;
     private DropsGenerator dropsGenerator;
     private Score score;
     private EnemiesGenerator enemiesGenerator;
 
+
     private void Awake() {
         player = FindObjectOfType<Player>();
         dropsGenerator = FindObjectOfType<DropsGenerator>();
         score = FindObjectOfType<Score>();
         enemiesGenerator = FindObjectOfType<EnemiesGenerator>();
+    }
+
+    private void Start() {
+        GameObject spawnInstance = Instantiate(spawnPrefab);
+        spawnInstance.transform.position = transform.position;
     }
 
 
@@ -37,6 +45,10 @@ public class Enemy : MonoBehaviour {
             dropsGenerator.DropFromEnemy(transform.position, sourceType);
             score.AddScore(reward);
             enemiesGenerator.ReportEnemyDeath();
+
+            GameObject deathInstance = Instantiate(deathPrefab);
+            deathInstance.transform.position = transform.position;
+
             Destroy(gameObject);
         }
     }
