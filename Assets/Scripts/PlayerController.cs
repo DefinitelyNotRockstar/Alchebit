@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour {
 
     private Player player;
     private Rigidbody2D playerRigidBody;
+    public float potionCooldown;
+    private float lastPotion;
 
     //Animation
     private Animator animator;
@@ -50,7 +52,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Update() {
-        Shoot();
+        if (Time.time - lastPotion > potionCooldown)
+            Shoot();
         UpdateAnimations();
     }
 
@@ -82,44 +85,37 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetAxis("RightV") > movementThreashold) {
             animator.Play("ThrowingPotion");
             player.ThrowPotion(POTION.UP);
-
+            lastPotion = Time.time;
             return;
         }
         if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetAxis("RightV") < -movementThreashold) {
             animator.Play("ThrowingPotion");
             player.ThrowPotion(POTION.DOWN);
-
+            lastPotion = Time.time;
             return;
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetAxis("RightH") < -movementThreashold) {
             animator.Play("ThrowingPotion");
             player.ThrowPotion(POTION.LEFT);
-
+            lastPotion = Time.time;
             return;
         }
         if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetAxis("RightH") > movementThreashold) {
             animator.Play("ThrowingPotion");
             player.ThrowPotion(POTION.RIGHT);
-
+            lastPotion = Time.time;
             return;
         }
     }
 
-
     private void UpdateAnimations() {
-
         animator.SetBool("IsMoving", (this.movement.magnitude > 0.0f));
         animator.SetFloat("XSpeed", movement.normalized.x);
         animator.SetFloat("XLastDirection", lastXDirection);
-
     }
 
     public void PlaySound(AudioClip clip) {
         audioSource.clip = clip;
         audioSource.Play();
     }
-
-
-
-
 }

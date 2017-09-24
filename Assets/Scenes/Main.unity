@@ -912,6 +912,11 @@ Prefab:
       propertyPath: pickupClip
       value: 
       objectReference: {fileID: 8300000, guid: bc5daaec7e8a24c31b2d6ff353c11887, type: 3}
+    - target: {fileID: 114506382091466390, guid: 6ffc0c8cd75b5463791308ab560bad62,
+        type: 2}
+      propertyPath: potionCooldown
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ffc0c8cd75b5463791308ab560bad62, type: 2}
   m_IsPrefabParent: 0
