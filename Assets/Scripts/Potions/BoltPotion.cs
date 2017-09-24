@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BoltPotion : Potion {
-    override public bool OnActivation(Collision2D collision) {
-        if (!collision.gameObject.CompareTag("Player")) {
-            if (collision.gameObject.CompareTag("Enemy"))
-                collision.gameObject.GetComponent<Enemy>().ApplyDamage(potionDamage, POTION.UP);
-            return true;
-        }
-        return false;
+    override public bool OnActivation(Collider2D other, Vector2 collisionPos) {
+
+        if (other.gameObject.CompareTag("Enemy"))
+            other.gameObject.GetComponent<Enemy>().ApplyDamage(potionDamage, POTION.UP);
+        return true;
     }
 }

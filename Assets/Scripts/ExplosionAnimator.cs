@@ -19,7 +19,7 @@ public class ExplosionAnimator : MonoBehaviour {
     void Start () {
         animator.SetFloat("Type",(float)type);
         animator.Play("Explosion");
-        Destroy(gameObject, this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
+        Destroy(transform.parent.gameObject, this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
 	}
 	
 	// Update is called once per frame

@@ -24,8 +24,8 @@ public class Potion : MonoBehaviour {
 		return potion;
     }
 
-    public virtual bool OnActivation(Collision2D collision){
-		GameObject collisionObject = collision.collider.gameObject;
+    public virtual bool OnActivation(Collider2D other, Vector2 collisionPos){
+		GameObject collisionObject = other.gameObject;
 		if (!collisionObject.CompareTag("Player")) {
 			if (collisionObject.CompareTag("Enemy")) {
                 collisionObject.GetComponent<Enemy>().ApplyDamage(potionDamage, POTION.UP);

@@ -7,16 +7,16 @@ public class PoisonPotion : Potion {
     public GameObject poisonPrefab;
     public GameObject explosionPrefab;
 
-    override public bool OnActivation(Collision2D collision) {
+    override public bool OnActivation(Collider2D other, Vector2 collisionPos) {
 
 
 
 
         GameObject poison = Instantiate(poisonPrefab);
-		poison.transform.position = collision.contacts[0].point;
+        poison.transform.position = collisionPos;
 
         GameObject explosionInstance = Instantiate(explosionPrefab);
-		explosionInstance.transform.position = collision.contacts[0].point;
+		explosionInstance.transform.position = collisionPos;
 		explosionInstance.GetComponentInChildren<ExplosionAnimator>().type = POTION.DOWN;
 
             

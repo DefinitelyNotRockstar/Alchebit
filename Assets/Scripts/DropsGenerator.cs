@@ -9,7 +9,12 @@ public class DropsGenerator : MonoBehaviour {
     public int minDropFromEnemy = 4;
     public GameObject[] collectablePotions = new GameObject[4];
 
+    private Vector2 mapLimits;
     private float lastDropTime;
+
+    private void Awake() {
+        mapLimits = FindObjectOfType<EnemiesGenerator>().mapLimits;
+    }
 
     private void Start() {
         lastDropTime = Time.time;
@@ -22,7 +27,7 @@ public class DropsGenerator : MonoBehaviour {
     }
 
     private void RandomDrop() {
-        Vector2 position = new Vector2(Random.Range(-15, 15), Random.Range(-15, 15));
+        Vector2 position = new Vector2(Random.Range(-mapLimits.x, mapLimits.x), Random.Range(-mapLimits.y, mapLimits.y));
         POTION type = (POTION) Random.Range(0, 4);
         GameObject collectablePotion = Instantiate(collectablePotions[(int) type]);
         collectablePotion.transform.position = position;
@@ -40,9 +45,9 @@ public class DropsGenerator : MonoBehaviour {
 
             posOffset = new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f));
 
-			GameObject collectablePotion = Instantiate(collectablePotions[(int) type]);
-			collectablePotion.transform.position = position;
-            collectablePotion.GetComponent<Rigidbody2D>().AddForce(posOffset.normalized,ForceMode2D.Impulse);
+            GameObject collectablePotion = Instantiate(collectablePotions[(int) type]);
+            collectablePotion.transform.position = position;
+            collectablePotion.GetComponent<Rigidbody2D>().AddForce(posOffset.normalized, ForceMode2D.Impulse);
         }
     }
 

@@ -246,7 +246,10 @@ MonoBehaviour:
   enemyPrefab: {fileID: 1412800667141072, guid: b36d7202c70d5447a8ce483e9b43a4a1,
     type: 2}
   timeBetweenWaves: 30
-  initialEnemies: 10
+  timeWhenNoEnemies: 3
+  initialEnemies: 5
+  enemiesAddedEachWave: 3
+  mapLimits: {x: 6.5, y: 3.5}
 --- !u!114 &300134399
 MonoBehaviour:
   m_ObjectHideFlags: 0

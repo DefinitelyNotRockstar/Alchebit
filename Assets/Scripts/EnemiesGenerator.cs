@@ -6,11 +6,15 @@ public class EnemiesGenerator : MonoBehaviour {
 
     public GameObject enemyPrefab;
     public float timeBetweenWaves;
+    public float timeWhenNoEnemies;
     public int initialEnemies;
+    public int enemiesAddedEachWave;
+    public Vector2 mapLimits;
 
     private Transform playerTransform;
-    private int enemiesLeft;
+    private int enemiesToSpawn;
     private float startTime;
+    public int enemiesLeftAlive;
 
 
     private void Awake() {
@@ -22,8 +26,11 @@ public class EnemiesGenerator : MonoBehaviour {
     }
 
     private void Update() {
-        if (Time.time - startTime > timeBetweenWaves) {
-            initialEnemies += 5;
+        if (enemiesLeftAlive == 0) {
+            startTime = Time.time;
+        }
+        if (Time.time - startTime > timeBetweenWaves || (Time.time - startTime > timeWhenNoEnemies && enemiesLeftAlive == 0)) {
+            initialEnemies += enemiesAddedEachWave;
             createEnemies();
         }
     }
@@ -31,19 +38,24 @@ public class EnemiesGenerator : MonoBehaviour {
     private void createEnemies() {
         Vector2 enemyPosition;
         startTime = Time.time;
-        enemiesLeft = initialEnemies;
+        enemiesToSpawn = initialEnemies;
 
-        while (enemiesLeft > 0) {
+        while (enemiesToSpawn > 0) {
 
             do {
-                enemyPosition = new Vector2(Random.Range(-20f, 20f), Random.Range(-20f, 20f));
+                enemyPosition = new Vector2(Random.Range(-mapLimits.x, mapLimits.x), Random.Range(-mapLimits.y, mapLimits.y));
             } while (Vector2.Distance(enemyPosition, playerTransform.position) < 3.0f);
 
             GameObject enemy = Instantiate(enemyPrefab);
             enemy.transform.position = enemyPosition;
 
-            enemiesLeft--;
+            enemiesToSpawn--;
         }
+        enemiesLeftAlive = initialEnemies;
+    }
+
+    public void ReportEnemyDeath() {
+        enemiesLeftAlive--;
     }
 
 

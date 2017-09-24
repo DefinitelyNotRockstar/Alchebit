@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PotionInstance : MonoBehaviour {
 
-    public delegate bool ActivatePotion(Collision2D collision);
+    public delegate bool ActivatePotion(Collider2D other, Vector2 collisionPos);
     public ActivatePotion _potionFunction;
 
 
@@ -26,9 +26,10 @@ public class PotionInstance : MonoBehaviour {
 
         if(rigidBody.velocity.magnitude < explodeVelocityThresh){
 
+            if(_potionFunction(GetComponent<Collider2D>(), transform.position)){
+                Destroy(gameObject);
+            }
 
-            Collision2D aux = new Collision2D();
-            _potionFunction(null);
         }
 
         Move();
@@ -45,7 +46,7 @@ public class PotionInstance : MonoBehaviour {
     }
 
     public void OnCollisionEnter2D(Collision2D collision) {
-        if (_potionFunction(collision)) {
+        if (_potionFunction(collision.collider, collision.contacts[0].point)) {
             Destroy(gameObject);
         }
     }
