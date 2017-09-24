@@ -82,25 +82,25 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Shoot() {
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetAxis("RightV") > movementThreashold) {
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetButton("3")) {
             animator.Play("ThrowingPotion");
             player.ThrowPotion(POTION.UP);
             lastPotion = Time.time;
             return;
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetAxis("RightV") < -movementThreashold) {
+        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetButton("0")) {
             animator.Play("ThrowingPotion");
             player.ThrowPotion(POTION.DOWN);
             lastPotion = Time.time;
             return;
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetAxis("RightH") < -movementThreashold) {
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetButton("2")) {
             animator.Play("ThrowingPotion");
             player.ThrowPotion(POTION.LEFT);
             lastPotion = Time.time;
             return;
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetAxis("RightH") > movementThreashold) {
+        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetButton("1")) {
             animator.Play("ThrowingPotion");
             player.ThrowPotion(POTION.RIGHT);
             lastPotion = Time.time;

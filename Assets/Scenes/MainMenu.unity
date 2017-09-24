@@ -738,6 +738,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 1359632718}
+  audioSource: {fileID: 1679717667}
 --- !u!1 &1359632718 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1412800667141072, guid: b36d7202c70d5447a8ce483e9b43a4a1,
